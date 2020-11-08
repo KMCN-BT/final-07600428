@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +36,15 @@ public class MainActivity extends AppCompatActivity {
         rv.setLayoutManager(lm); // กำหนด layout manager ให้กับ RecyclerView
         rv.setAdapter(add); // กำหนด adapter ให้กับ RecyclerView
 
+        Button button_add = findViewById(R.id.button_addrecord);
+        button_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Addrecord.class);
+                startActivity(intent);
+            }
+        });
+
         Button buttonsave = findViewById(R.id.button_save);
         buttonsave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
 }
 
 class Addrecord extends RecyclerView.Adapter<Addrecord.MyViewHolder> {
-
+    MainActivity main = new MainActivity();
     private dataRecord[] data = {
-            new dataRecord(" KM/H","METERS,"+" SECONDS")
+            new dataRecord(" KM/H"," METERS,"+" SECONDS")
     };
     Addrecord() {
     }
